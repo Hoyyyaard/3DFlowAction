@@ -3,7 +3,7 @@
 
 This repository contains PyTorch implementation for __3DFlowAction: Learning Cross-Embodiment Manipulation from 3D Flow World Model__ 
 
-[[📖 arXiv]]() 
+[[📖 arXiv]](https://arxiv.org/abs/2506.06199) 
 [[🤖 model]]()
 [[📑 dataset]]()
 
