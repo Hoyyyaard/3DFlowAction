@@ -23,7 +23,7 @@ The predicted 3D optical flow serves as constraints for an optimization policy t
 * [ ] Release training code of 3D Flow World Model
 * [ ] Release realworld robot implement code 
 
-## Release Moving object detection pipeline
+## Moving object detection pipeline
 We use BridgeV2 as an example to generation task-related 3D Flow
 
 ### Step0: Install environment requirements
