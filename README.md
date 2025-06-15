@@ -4,7 +4,7 @@
 This repository contains PyTorch implementation for __3DFlowAction: Learning Cross-Embodiment Manipulation from 3D Flow World Model__ 
 
 [[📖 arXiv]](https://arxiv.org/abs/2506.06199) 
-[[🤖 model]]()
+[[🤖 model]](https://huggingface.co/Hoyard/3DFlowAction)
 [[📑 dataset]]()
 
 ## Overview
@@ -18,7 +18,7 @@ The predicted 3D optical flow serves as constraints for an optimization policy t
 ## TODO
 * [x] Release Moving object detection pipeline for BridgeV2
 * [ ] Release ManiFlow-110k
-* [ ] Release model weight of 3D Flow World Model
+* [x] Release model weight of 3D Flow World Model
 * [ ] Release inference code of 3D Flow World Model
 * [ ] Release training code of 3D Flow World Model
 * [ ] Release realworld robot implement code 
