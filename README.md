@@ -19,7 +19,7 @@ The predicted 3D optical flow serves as constraints for an optimization policy t
 * [x] Release Moving object detection pipeline for BridgeV2
 * [ ] Release ManiFlow-110k
 * [x] Release model weight of 3D Flow World Model
-* [ ] Release inference code of 3D Flow World Model
+* [x] Release inference code of 3D Flow World Model
 * [x] Release training code of 3D Flow World Model
 * [ ] Release realworld robot implement code 
 
@@ -62,4 +62,10 @@ run_scripts/train_flow_3d_bridge_wovae_slurm.sh
 ### Step5: Visualization evaluation results
 ```bash
 python scripts/flow_generation/viz_3d_flow_batch.py
+```
+
+### Step6: Inference using release checkpoints
+```bash
+# Put release checkpoint to results/release/checkpoints/epoch_400
+bash run_scripts/inference.sh
 ```

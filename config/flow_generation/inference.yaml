@@ -1,5 +1,6 @@
 dev_dir: ${oc.env:DEV_PATH}
-entity_name: Debug
+entity_name: results/release/checkpoints/epoch_400
+
 hydra:
   run:
     dir: ${dev_dir}/im2flow2act/experiment/flow_generation/animateFlow/${entity_name}
@@ -19,28 +20,28 @@ training:
   mixed_precision: "fp16"
   enable_xformers_memory_efficient_attention: True
   # dataloader 
-  batch_size: 2  # A100:12
-  num_workers: 2
+  batch_size: 1 # A100:12
+  num_workers: 8
   shuffle: True
   pin_memory: True
   persistent_workers: True
   drop_last: False
   # ckpt
-  ckpt_frequency: 100
+  ckpt_frequency: 200
   # load_pretrain_weight
   load_pretrain_weight: True
-  # resume_training: True 
 
 animateflow_kwargs:
   clip_model: "openai/clip-vit-large-patch14"
   global_image_size: [224,224]
   freeze_visual_encoder: True
-  global_condition_type: "all"
+  global_condition_type: "cls_token"
   emb_dim: 768
 
 load_pretrain_motion_module: False  
 lora:
   rank: 128
+
 
 vae_pretrained_model_path: ${oc.env:DEV_PATH}/checkpoints/decoder/checkpoints/epoch_400
 pretrained_model_path: ${oc.env:DEV_PATH}/im2flow2act/pretrain_weights/StableDiffusion1.5
@@ -88,7 +89,6 @@ optimizer:
   adam_epsilon: 1e-08
 
 dataset_proc_cache_name: <YOUR PREPROCESS OUTPUT DATASET NAME>
-pc_aug: false
 
 dataset:
   _target_: im2flow2act.flow_generation.dataloader.animateflow_dataset.AnimateFlowDataset_Libero
@@ -104,12 +104,11 @@ dataset:
   proc_cache: "<YOUR PREPROCESS OUTPUT PATH>/${dataset_proc_cache_name}"
   # max_episode: [4,4,4,4,4]
   dataset_name: bridge
-  pc_aug: ${pc_aug}
 
 evaluation:
-  eval_frequency: 100
+  eval_frequency: 200
   num_samples: 30
-  num_inference_steps: 50
+  num_inference_steps: 25
   guidance_scale: 8.
   evaluation_save_path: null
   viz_n_points: 256
@@ -127,23 +126,6 @@ evaluation:
       diff_flow: False
       preprocess: False
       proc_cache: "<YOUR PREPROCESS OUTPUT PATH>/${dataset_proc_cache_name}"
-      max_episode: 15
-      start_episode: 0
-      set: train  
+      max_episode: 1
+      start_episode: 0 
       dataset_name: bridge
-      pc_aug: ${pc_aug}
-    - _target_: im2flow2act.flow_generation.dataloader.animateflow_dataset.AnimateFlowDataset_Libero
-      data_pathes: ["None"]
-      grid_size: 16
-      n_sample_frames: ${dataset.n_sample_frames}
-      frame_sampling_method: "uniform"
-      frame_resize_shape: [224,224]
-      point_tracking_img_size: [256,256]
-      diff_flow: False
-      preprocess: False
-      proc_cache: "<YOUR PREPROCESS OUTPUT PATH>/${dataset_proc_cache_name}"
-      max_episode: 10
-      start_episode: 0
-      set: unseen_task
-      dataset_name: bridge
-      pc_aug: false
