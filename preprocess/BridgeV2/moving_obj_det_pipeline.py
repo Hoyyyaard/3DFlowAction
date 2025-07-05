@@ -25,11 +25,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--data_buffer_path",
-        default="/apdcephfs_cq10/share_1150325/hongyanzhi/im2Flow2Act/bridge_orig/processed_tmp_zarr_debug",
+        default="bridge_orig/processed_tmp_zarr_debug",
     )
     parser.add_argument(
         "--data_path",
-        default="/apdcephfs_cq10/share_1150325/hongyanzhi/im2Flow2Act/bridge_orig/processed_tmp",
+        default="bridge_orig/processed_tmp",
     )
     parser.add_argument(
         "--checkpoint",

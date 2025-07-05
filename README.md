@@ -20,7 +20,7 @@ The predicted 3D optical flow serves as constraints for an optimization policy t
 * [ ] Release ManiFlow-110k
 * [x] Release model weight of 3D Flow World Model
 * [ ] Release inference code of 3D Flow World Model
-* [ ] Release training code of 3D Flow World Model
+* [x] Release training code of 3D Flow World Model
 * [ ] Release realworld robot implement code 
 
 ## Moving object detection pipeline
@@ -47,3 +47,19 @@ python moving_obj_det_pipeline_all.py
 ```
 
 ### Step2: Use VideoDepthAnything to estimate depth of frames and Project the 2D flow to 3D space
+
+
+### Step3: Prepare 3D optical flow for training
+```bash
+bash run_scripts/preprocess_bridge_dataset.sh
+```
+
+### Step4: Training
+```bash
+run_scripts/train_flow_3d_bridge_wovae_slurm.sh
+```
+
+### Step5: Visualization evaluation results
+```bash
+python scripts/flow_generation/viz_3d_flow_batch.py
+```
