@@ -23,14 +23,16 @@ The predicted 3D optical flow serves as constraints for an optimization policy t
 * [x] Release training code of 3D Flow World Model
 * [ ] Release realworld robot implement code 
 
-## Moving object detection pipeline
-We use BridgeV2 as an example to generation task-related 3D Flow
 
 ### Step0: Install environment requirements
 [Cotracker3](https://github.com/facebookresearch/co-tracker), [VideoDepthAnything](https://github.com/DepthAnything/Video-Depth-Anything), [GroundingSam2](https://github.com/IDEA-Research/Grounded-SAM-2)
+```bash
+conda env create -f environment.yaml
+```
 
-### Step1: Extract 2D optical flow for manipulated object
+### Step1: Extract 2D optical flow for manipulated object(Moving object detection pipeline)
 ``` bash
+# We use BridgeV2 as an example to generation task-related 3D Flow
 # Source data structure
 BridgeV2-Processed
 ── depth
